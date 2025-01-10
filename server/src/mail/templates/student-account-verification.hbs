@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kết quả xác thực tài khoản</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .container {
+            margin: 0 auto;
+            max-width: 600px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .header {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+        .content {
+            margin-top: 20px;
+        }
+        .content p {
+            margin: 5px 0;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+        }
+        .note {
+            font-size: 13px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            KẾT QUẢ XÁC THỰC TÀI KHOẢN
+        </div>
+        <div class="content">
+            <p>Hệ thống Phần mềm quản lý KH&CN - Trường Đại học Thủ Dầu Một,</p>
+            <p><b>KẾT QUẢ XÁC THỰC TÀI KHOẢN:</b></p>
+            <ul>
+                <li><b>Sinh viên:</b> {{name}}</li>
+                <li><b>Email:</b> {{email}}</li>
+                <li><b>Số điện thoại:</b> {{phone}}</li>
+            </ul>
+            <p>Tài khoản bạn đăng ký trên hệ thống vào lúc: <b>{{registrationTime}}</b>, đã được xác thực thành công. Xin chúc mừng bạn!</p>
+            <p>Bạn có thể đăng nhập (bằng email) vào hệ thống để tiến hành đăng ký thực hiện đề tài NCKH tại địa chỉ trên internet: <a href="http://qlkh.tdmu.edu.vn">qlkh.tdmu.edu.vn</a></p>
+            <p>Cảm ơn bạn đã sử dụng hệ thống.</p>
+        </div>
+        <div class="footer">
+            <p class="note">
+                * Xin lưu ý: Đây là Hệ thống thư trả lời tự động, đề nghị không trả lời lại thư này. Để liên hệ với chúng tôi, quý Thầy/Cô vui lòng gửi thư đến địa chỉ ghi dưới đây.
+            </p>
+            <p><b>Phòng Khoa học - Trường Đại học Thủ Dầu Một</b></p>
+            <p>Website: <a href="http://khcn.tdmu.edu.vn">khcn.tdmu.edu.vn</a></p>
+            <p>Email: phongkhcn@tdmu.edu.vn</p>
+            <p>Điện thoại: 02743.822.518 (Số nội bộ 3 - 120)</p>
+            <p>Địa chỉ: Phòng B202, số 6 Trần Văn Ơn, phường Phú Hoà, TP. Thủ Dầu Một, tỉnh Bình Dương, Việt Nam.</p>
+        </div>
+    </div>
+</body>
+</html>
