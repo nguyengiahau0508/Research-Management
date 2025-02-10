@@ -2,6 +2,7 @@
 import { Injectable } from '@nestjs/common';
 import { drive_v3, google } from 'googleapis';
 import { GoogleOauth2Service } from '../google-oauth2/google-oauth2.service';
+import { Readable } from 'stream';
 
 @Injectable()
 export class GoogleDriveService {
@@ -12,31 +13,42 @@ export class GoogleDriveService {
     this.driveClient = google.drive({ version: 'v3', auth });
   }
 
+
+  private bufferToStream(buffer: any): Readable {
+    // Chuyển đổi thành Buffer thực sự nếu chưa phải
+    const realBuffer = Buffer.isBuffer(buffer) ? buffer : Buffer.from(buffer.data);
+    const stream = new Readable();
+    stream.push(realBuffer);
+    stream.push(null); // Kết thúc stream
+    return stream;
+  }
+
   /**
    * Upload file lên Google Drive
-   * @param fileName Tên file
-   * @param mimeType Loại file (ví dụ: 'image/jpeg', 'application/pdf')
-   * @param fileContent Nội dung file (Buffer)
-   * @returns ID của file sau khi upload
    */
-  async uploadFile(fileName: string, mimeType: string, fileContent: Buffer): Promise<string> {
-    const fileMetadata = {
-      name: fileName,
-    };
+  async uploadFile(file: Express.Multer.File): Promise<string> {
+    const fileStream = this.bufferToStream(file.buffer);
 
-    const media = {
-      mimeType,
-      body: fileContent,
-    };
+    try {
+      const response = await this.driveClient.files.create({
+        requestBody: {
+          name: file.originalname,
+          parents: ['1mLMlYnef1MnEA3sizXHAVCP4an_JsMag'], // Thay bằng folder ID thực tế
+        },
+        media: {
+          mimeType: file.mimetype,
+          body: fileStream, // Sử dụng stream thay vì buffer
+        },
+        fields: 'id',
+      });
 
-    const response = await this.driveClient.files.create({
-      requestBody: fileMetadata,
-      media,
-      fields: '1BrqleDDgbsRU-3kJ2YkSPbdstmNRpF5b',
-    });
-
-    return response.data.id; // Trả về ID của file
+      return response.data.id;
+    } catch (error) {
+      console.error('Error uploading file:', error.message);
+      throw new Error('Could not upload file to Google Drive');
+    }
   }
+
 
   /**
    * Xóa file trên Google Drive

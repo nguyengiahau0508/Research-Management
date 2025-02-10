@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { google } from 'googleapis';
-import * as serviceAccount from './config/coderank-444000-9de364a8c52e.json'
+import * as serviceAccount from './config/google-auth02-config.json'
 
 @Injectable()
 export class GoogleOauth2Service {
