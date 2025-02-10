@@ -6,10 +6,11 @@ import { GoogleAuthConfigService } from 'src/config/auth/google-auth/google-auth
 @Injectable()
 export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
   constructor(private readonly googleAuthConfig: GoogleAuthConfigService) {
+    console.log(googleAuthConfig)
     super({
       clientID: googleAuthConfig.clientId,
       clientSecret: googleAuthConfig.clientSecret,
-      callbackURL: `http://localhost:8080/auth/google/callback`,
+      callbackURL: googleAuthConfig.redirectUrl,
       scope: ['email', 'profile'],
     });
   }
