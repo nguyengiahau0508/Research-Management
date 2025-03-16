@@ -1,0 +1,61 @@
+@if(isOpenningStudentForm === true){
+<div class="modal-overlay open">
+  <div class="student-form-modal">
+    <div class="modal-content">
+      @if(selectedStudentId){
+      <app-student-form (onCancel)="onStudentFormOpen()" [studentId]="selectedStudentId" />
+      }@else{
+      <app-student-form (onCancel)="onStudentFormOpen()" />
+      }
+    </div>
+  </div>
+</div>
+}
+
+
+<div class="students-page">
+  <h2>Students</h2>
+
+  <div class="actions">
+    <button class="btn-add" (click)="addStudent()">Add New Student</button>
+    @if(isViewPending){
+    <button class="btn-all" (click)="loadStudents()">View All Students</button>
+    }@else{
+    <button class="btn-pending" (click)="viewPendingStudents()">View Pending Students</button>
+    }
+  </div>
+
+  <table class="student-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Full Name</th>
+        <th>Gender</th>
+        <th>Class</th>
+        <th>Email</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (student of students; track student.id) {
+      <tr>
+        <td>{{ student.id }}</td>
+        <td>{{ student.fMName }} {{ student.lastname }}</td>
+        <td>{{ student.gender }}</td>
+        <td>{{ student.classId }}</td>
+        <td>{{ student.email }}</td>
+        <td>{{ student.status }}</td>
+        <td>
+          @if(student.status == "PENDING"){
+          <button class="btn-approve" (click)="approveStudent(student.id)">Approve</button>
+          }@else{
+          <button class="btn-edit" (click)="editStudent(student.id)">Edit</button>
+          }
+          <button class="btn-delete" (click)="deleteStudent(student.id)">Delete</button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

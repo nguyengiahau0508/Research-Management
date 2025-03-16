@@ -1,0 +1,14 @@
+<form (ngSubmit)="onSubmit()" class="training-program-form">
+  <h2>{{ isEditMode ? 'Edit Training Program' : 'Add Training Program' }}</h2>
+
+  <div class="form-group">
+    <label for="name">Program Name</label>
+    <input id="name" name="name" type="text" [(ngModel)]="trainingProgram.name" placeholder="Enter program name"
+      required />
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" class="btn-save">{{ isEditMode ? 'Update' : 'Save' }}</button>
+    <button type="button" class="btn-cancel" (click)="cancel()">Cancel</button>
+  </div>
+</form>

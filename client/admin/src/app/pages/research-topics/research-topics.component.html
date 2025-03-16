@@ -1,0 +1,61 @@
+@if( isFormOpenning){
+<div class="modal-overlay open">
+  <div class="student-form-modal">
+    <div class="modal-content">
+      @if(selectedResearchTopic){
+      <app-research-topic-form [researchTopic]="selectedResearchTopic" (onCancel)="onCloseForm()" />
+      }@else{
+      <app-research-topic-form (onCancel)="onCloseForm()" />
+      }
+    </div>
+  </div>
+</div>
+}
+
+<div class="research-topics-page">
+  <h2>Research Topics</h2>
+
+  <button class="btn-add" (click)="addResearchTopic()">Add New Research Topic</button>
+
+  @if (researchTopics.length > 0) {
+  <table class="research-topic-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Department</th>
+        <th>Research Field</th>
+        <th>Lecturer</th>
+        <th>Funding</th>
+        <th>Duration (Months)</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (topic of researchTopics; track topic.id) {
+      <tr>
+        <td>{{ topic.id }}</td>
+        <td>{{ topic.name }}</td>
+        <td>{{ topic.department.name }}</td>
+        <td>{{ topic.researchField.name }}</td>
+        <td>{{ topic.lecturer.fMName }} {{ topic.lecturer.lastname }}</td>
+        <td>{{ topic.funding | currency:'VND':'symbol':'1.0-0' }}</td>
+        <td>{{ topic.durationMonths }}</td>
+        <td>
+          <div class="btn-acction">
+            @if(topic.status =='PENDING'){
+            <button class="btn-approved" (click)="approvedResearchTopic(topic.id)">Apprroved</button>
+            }
+            <button class="btn-edit" (click)="editResearchTopic(topic)">Edit</button>
+            <button class="btn-delete" (click)="deleteResearchTopic(topic.id)">Delete</button>
+
+          </div>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+  } @else {
+  <p>No research topics found.</p>
+  }
+</div>

@@ -27,6 +27,11 @@ export class StudentsService extends BaseService<Student> {
 
     const saved = await this.studentRepository.save(student);
 
+    this.sendNotfitication(student)
+    return saved
+  }
+
+  async sendNotfitication(student: Student) {
     this.mailerService.sendMail({
       to: student.email,
       subject: 'Kết quả xác thực tài khoản',
@@ -38,6 +43,5 @@ export class StudentsService extends BaseService<Student> {
         registrationTime: formatDateToVn(student.createdAt),
       },
     });
-    return saved
   }
 }

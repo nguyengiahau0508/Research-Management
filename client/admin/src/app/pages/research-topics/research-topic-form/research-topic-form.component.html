@@ -1,0 +1,100 @@
+<form (ngSubmit)="onSubmit()" class="research-topic-form">
+  <h2>{{ researchTopic.id!=0? 'Edit Research Topic' : 'Add Research Topic' }}</h2>
+
+  <div class="form-group">
+    <label for="name">Topic Name</label>
+    <input id="name" name="name" type="text" [(ngModel)]="researchTopic.name" placeholder="Enter topic name" required />
+  </div>
+
+  <div class="form-group">
+    <label for="department">Department</label>
+    <select id="department" name="department" [(ngModel)]="researchTopic.department.id" required>
+      <option value="" disabled>Select a department</option>
+      @for (dept of departments; track dept.id) {
+      <option [value]="dept.id">{{ dept.name }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="researchField">Research Field</label>
+    <select id="researchField" name="researchField" [(ngModel)]="researchTopic.researchField.id" required>
+      <option value="" disabled>Select a research field</option>
+      @for (field of researchFields; track field.id) {
+      <option [value]="field.id">{{ field.name }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="lecturer">Lecturer</label>
+    <select id="lecturer" name="lecturer" [(ngModel)]="researchTopic.lecturer.id" required>
+      <option value="" disabled>Select a lecturer</option>
+      @for (lecturer of lecturers; track lecturer.id) {
+      <option [value]="lecturer.id">{{ lecturer.fMName }} {{ lecturer.lastname }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="isDocumentPrepared">Document Prepared</label>
+    <input id="isDocumentPrepared" name="isDocumentPrepared" type="checkbox"
+      [(ngModel)]="researchTopic.isDocumentPrepared" />
+  </div>
+
+  <div class="form-group">
+    <label for="necessity">Necessity</label>
+    <div class="NgxEditor__Wrapper">
+      <ngx-editor-menu [editor]="editorNecessity"> </ngx-editor-menu>
+      <ngx-editor id="necessity" name="necessity" [editor]="editorNecessity" [(ngModel)]="researchTopic.necessity"
+        [ngModelOptions]="{standalone: true}" [disabled]="false" [placeholder]="'Type here...'"></ngx-editor>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="mainContent">Main Content</label>
+    <div class="NgxEditor__Wrapper">
+      <ngx-editor-menu [editor]="editorMainContent"> </ngx-editor-menu>
+      <ngx-editor id="mainContent" name="mainContent" [editor]="editorMainContent"
+        [(ngModel)]="researchTopic.mainContent" [ngModelOptions]="{standalone: true}" [disabled]="false"
+        [placeholder]="'Type here...'"></ngx-editor>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="productsResults">Products/Results</label>
+    <div class="NgxEditor__Wrapper">
+      <ngx-editor-menu [editor]="editorProductsResults"> </ngx-editor-menu>
+      <ngx-editor id="productsResults" name="productsResults" [editor]="editorProductsResults"
+        [(ngModel)]="researchTopic.productsResults" [ngModelOptions]="{standalone: true}" [disabled]="false"
+        [placeholder]="'Type here...'"></ngx-editor>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="funding">Funding</label>
+    <input id="funding" name="funding" type="number" [(ngModel)]="researchTopic.funding"
+      placeholder="Enter funding amount" required />
+  </div>
+
+  <div class="form-group">
+    <label for="durationMonths">Duration (Months)</label>
+    <input id="durationMonths" name="durationMonths" type="number" [(ngModel)]="researchTopic.durationMonths"
+      placeholder="Enter duration in months" required />
+  </div>
+
+  <div class="form-group">
+    <label for="researchCapacity">Research Capacity</label>
+    <div class="NgxEditor__Wrapper">
+      <ngx-editor-menu [editor]="editorResearchCapacity"> </ngx-editor-menu>
+      <ngx-editor id="researchCapacity" name="researchCapacity" [editor]="editorResearchCapacity"
+        [(ngModel)]="researchTopic.researchCapacity" [ngModelOptions]="{standalone: true}" [disabled]="false"
+        [placeholder]="'Type here...'"></ngx-editor>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" class="btn-save">{{ isEditMode ? 'Update' : 'Save' }}</button>
+    <button type="button" class="btn-cancel" (click)="cancel()">Cancel</button>
+  </div>
+</form>

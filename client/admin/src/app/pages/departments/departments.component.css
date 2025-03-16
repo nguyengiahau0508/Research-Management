@@ -1,0 +1,94 @@
+/* Trang tổng thể */
+.departments-page {
+  padding: 20px;
+  background-color: #ECECEC;
+  border-radius: 8px;
+}
+
+/* Tiêu đề */
+.departments-page h2 {
+  color: #07689F;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+/* Nút thêm mới */
+.btn-add {
+  background-color: #07689F;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-add:hover {
+  background-color: #055a85;
+}
+
+/* Bảng dữ liệu */
+.department-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Tiêu đề bảng */
+.department-table thead {
+  background-color: #07689F;
+  color: white;
+}
+
+.department-table th,
+.department-table td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Hàng bảng hover */
+.department-table tbody tr:hover {
+  background-color: rgba(7, 104, 159, 0.1);
+}
+
+/* Căn chỉnh các nút trong bảng */
+.department-table td:last-child {
+  text-align: center;
+}
+
+/* Nút "Edit" */
+.btn-edit {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-right: 5px;
+}
+
+.btn-edit:hover {
+  background-color: #388E3C;
+}
+
+/* Nút "Delete" */
+.btn-delete {
+  background-color: #FF4C4C;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-delete:hover {
+  background-color: #D32F2F;
+}

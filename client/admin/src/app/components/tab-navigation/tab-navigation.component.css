@@ -1,0 +1,30 @@
+.tab-navigation {
+  display: flex;
+  background-color: #FFFFFF;
+  /* Nền trắng */
+  border-bottom: 1px solid #E6F0FF;
+  /* Viền xanh dương nhạt */
+}
+
+.tab-item {
+  padding: 15px 20px;
+  text-decoration: none;
+  color: #6C757D;
+  /* Xám trung */
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.tab-item:hover {
+  color: #007BFF;
+  /* Xanh dương khi hover */
+  background-color: #E6F0FF;
+  /* Nền xanh nhạt */
+}
+
+.tab-item.active {
+  color: #007BFF;
+  /* Xanh dương khi active */
+  border-bottom: 2px solid #007BFF;
+  /* Đường viền dưới xanh dương */
+}

@@ -1,0 +1,31 @@
+<div class="departments-page">
+  <h2>Departments</h2>
+
+  <button class="btn-add" (click)="addDepartment()">Add New Department</button>
+
+  <table class="department-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Created At</th>
+        <th>Updated At</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (dept of departments; track dept.id) {
+      <tr>
+        <td>{{ dept.id }}</td>
+        <td>{{ dept.name }}</td>
+        <td>{{ dept.createdAt | date:'short' }}</td>
+        <td>{{ dept.updatedAt | date:'short' }}</td>
+        <td>
+          <button class="btn-edit" (click)="editDepartment(dept.id)">Edit</button>
+          <button class="btn-delete" (click)="deleteDepartment(dept)">Delete</button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

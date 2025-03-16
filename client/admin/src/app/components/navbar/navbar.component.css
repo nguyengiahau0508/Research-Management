@@ -1,0 +1,71 @@
+/* Navbar tổng thể */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #07689F;
+  /* Màu chủ đạo */
+  color: white;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+/* Nhóm bên trái (Toggle + Tiêu đề) */
+.navbar .left {
+  display: flex;
+  align-items: center;
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  margin-right: 15px;
+  transition: transform 0.2s;
+}
+
+.toggle-btn:hover {
+  transform: scale(1.1);
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Nhóm bên phải (Thông tin người dùng) */
+.navbar .right {
+  display: flex;
+  align-items: center;
+}
+
+/* Thông tin người dùng */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 2px solid white;
+  object-fit: cover;
+}
+
+/* Nút đăng xuất */
+.logout-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.logout-btn:hover {
+  transform: scale(1.1);
+}

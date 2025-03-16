@@ -4,6 +4,8 @@ import { HttpExceptionFilter } from './common/exceptions/http-exception.filter';
 import { ResponseInterceptor } from './common/interceptors/response.interceptor';
 import { join } from 'path';
 import { NestExpressApplication } from '@nestjs/platform-express';
+import cookieParser from 'cookie-parser';
+// somewhere in your initialization file
 
 async function bootstrap() {
   const port = Number(process.env.PORT) || 3000
@@ -17,6 +19,13 @@ async function bootstrap() {
     AppModule,
   );
 
+  app.enableCors({
+    origin: 'http://localhost:4200',
+    credentials: true
+  })
+
+  app.use(cookieParser())
+  app.setGlobalPrefix('api');
   app.useGlobalFilters(new HttpExceptionFilter())
   app.useGlobalInterceptors(new ResponseInterceptor());
 

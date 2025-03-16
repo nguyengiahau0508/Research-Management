@@ -1,0 +1,17 @@
+<header class="navbar">
+  <div class="left">
+    <button class="toggle-btn" (click)="onToggleSidebar()">
+      <i class="fas fa-bars"></i>
+    </button>
+    <span class="title">Dashboard</span>
+  </div>
+  <div class="right">
+    <div class="user-info">
+      <img [src]="user.avatar" alt="Avatar" class="avatar" />
+      <span>{{ user.name }}</span>
+      <button class="logout-btn">
+        <i class="fas fa-sign-out-alt"></i>
+      </button>
+    </div>
+  </div>
+</header>

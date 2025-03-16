@@ -1,0 +1,99 @@
+/* Form Container */
+.student-form {
+  width: 100%;
+  background-color: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin: auto;
+}
+
+/* Tiêu đề form */
+.student-form h2 {
+  font-size: 22px;
+  color: #07689F;
+  margin-bottom: 15px;
+}
+
+/* Form Group */
+.form-group {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+/* Input chung */
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Hiệu ứng focus */
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #07689F;
+  box-shadow: 0 0 5px rgba(7, 104, 159, 0.3);
+  outline: none;
+}
+
+/* Trường ID bị disable */
+.form-group input[disabled] {
+  background-color: #f0f0f0;
+  cursor: not-allowed;
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+/* Nút Save */
+.btn-save {
+  flex: 1;
+  background-color: #07689F;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  margin-right: 10px;
+}
+
+.btn-save:hover {
+  background-color: #055a85;
+  transform: scale(1.05);
+}
+
+/* Nút Cancel */
+.btn-cancel {
+  flex: 1;
+  background-color: #ccc;
+  color: #333;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.btn-cancel:hover {
+  background-color: #999;
+  transform: scale(1.05);
+}

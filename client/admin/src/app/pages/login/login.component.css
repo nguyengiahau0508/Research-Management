@@ -1,0 +1,63 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+h2 {
+  text-align: center;
+  color: #6C757D;
+  /* Xám trung cho tiêu đề */
+  margin-bottom: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  color: #6C757D;
+  /* Xám trung cho nhãn */
+  margin-bottom: 5px;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #007BFF;
+  /* Viền xanh dương */
+  border-radius: 4px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+input:focus {
+  border-color: #0066CC;
+  /* Xanh dương đậm khi focus */
+}
+
+.error {
+  color: #DC3545;
+  /* Đỏ cho thông báo lỗi */
+  text-align: center;
+  font-size: 14px;
+}
+
+.btn-login {
+  padding: 12px;
+  background-color: #007BFF;
+  /* Xanh dương cho nút */
+  color: #FFFFFF;
+  /* Chữ trắng */
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-login:hover {
+  background-color: #0066CC;
+  /* Xanh dương đậm khi hover */
+}

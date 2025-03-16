@@ -1,0 +1,21 @@
+<div class="department-form-container">
+  <form (ngSubmit)="onSubmit()" class="department-form">
+    <h2>{{ isEditMode ? 'Edit Department' : 'Add Department' }}</h2>
+
+    <div class="form-group">
+      <label for="name">Department Name</label>
+      <input id="name" name="name" type="text" [(ngModel)]="department.name" placeholder="Enter department name"
+        required />
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn-save">{{ isEditMode ? 'Update' : 'Save' }}</button>
+      <button type="button" class="btn-cancel" (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+  @if(isAddingTranningProgram){
+  <app-training-program-form [isEditMode]="false" [department]="department" />
+  }@else{
+  <app-training-programs (add)="onAddingTranningProgram()" [department]="department" />
+  }
+</div>

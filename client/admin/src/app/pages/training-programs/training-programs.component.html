@@ -1,0 +1,31 @@
+<div class="training-programs-page">
+  <h2>Training Programs</h2>
+
+  <button class="btn-add" (click)="addTrainingProgram()">Add New Training Program</button>
+
+  <table class="training-program-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Created At</th>
+        <th>Updated At</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (program of trainingPrograms; track program.id) {
+      <tr>
+        <td>{{ program.id }}</td>
+        <td>{{ program.name }}</td>
+        <td>{{ program.createdAt | date:'short' }}</td>
+        <td>{{ program.updatedAt | date:'short' }}</td>
+        <td>
+          <button class="btn-edit" (click)="editTrainingProgram(program.id)">Edit</button>
+          <button class="btn-delete" (click)="deleteTrainingProgram(program.id)">Delete</button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

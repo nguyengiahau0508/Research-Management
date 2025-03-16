@@ -1,0 +1,7 @@
+<nav class="tab-navigation">
+  @for (tab of tabs; track tab) {
+  <a [routerLink]="tab.route" routerLinkActive="active" class="tab-item">
+    {{ tab.label }}
+  </a>
+  }
+</nav>

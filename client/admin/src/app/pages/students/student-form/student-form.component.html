@@ -1,0 +1,86 @@
+<form (ngSubmit)="onSubmit()" class="student-form">
+  <h2>@if (isEditMode) { Edit Student } @else { Add Student }</h2>
+
+  <div class="form-group">
+    <label for="id">Student ID</label>
+    <input id="id" name="id" type="text" [(ngModel)]="student.id" placeholder="Enter student ID" required
+      [disabled]="isEditMode" />
+  </div>
+
+  <div class="form-group">
+    <label for="fMName">First/Middle Name</label>
+    <input id="fMName" name="fMName" type="text" [(ngModel)]="student.fMName" placeholder="Enter first/middle name"
+      required />
+  </div>
+
+  <div class="form-group">
+    <label for="lastname">Last Name</label>
+    <input id="lastname" name="lastname" type="text" [(ngModel)]="student.lastname" placeholder="Enter last name"
+      required />
+  </div>
+
+  <div class="form-group">
+    <label for="gender">Gender</label>
+    <select id="gender" name="gender" [(ngModel)]="student.gender" required>
+      @for (gender of genders; track gender) {
+      <option [value]="gender">{{ gender }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="classId">Class ID</label>
+    <input id="classId" name="classId" type="text" [(ngModel)]="student.classId" placeholder="Enter class ID"
+      required />
+  </div>
+
+  <div class="form-group">
+    <label for="phone">Phone</label>
+    <input id="phone" name="phone" type="text" [(ngModel)]="student.phone" placeholder="Enter phone number" required />
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" [(ngModel)]="student.email" placeholder="Enter email" required />
+  </div>
+
+  <div class="form-group">
+    <label for="address">Address</label>
+    <input id="address" name="address" type="text" [(ngModel)]="student.address" placeholder="Enter address" required />
+  </div>
+
+  <div class="form-group">
+    <label for="department">Department</label>
+    <select id="department" name="department" [(ngModel)]="student.department.id"
+      (change)="loadTrainingPrograms(student.department.id)" required>
+      <option value="" disabled>Select a department</option>
+      @for (dept of departments; track dept.id) {
+      <option [value]="dept.id">{{ dept.name }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="traningProgram">Training Program</label>
+    <select id="traningProgram" name="traningProgram" [(ngModel)]="student.traningProgram.id" required>
+      <option value="" disabled>Select a training program</option>
+      @for (program of trainingPrograms; track program.id) {
+      <option [value]="program.id">{{ program.name }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="status">Status</label>
+    <select id="status" name="status" [(ngModel)]="student.status" required>
+      @for (status of statuses; track status) {
+      <option [value]="status">{{ status }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" class="btn-save">@if (isEditMode) { Update } @else { Save }</button>
+    <button type="button" class="btn-cancel" (click)="cancel()">Cancel</button>
+  </div>
+</form>

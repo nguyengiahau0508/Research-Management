@@ -1,9 +1,9 @@
-import { Body, Controller, ForbiddenException, Get, Post, Redirect, Render, Req, Res, UseGuards } from "@nestjs/common"
+import { Body, Controller, Get, Post, Render, Req, Res, UseGuards } from "@nestjs/common"
 import { AuthService } from "./auth.service";
 import { RegisterStudentAuthDto } from "./dto/register-student-auth.dto";
 import { AuthGuard } from "@nestjs/passport";
 import { Role } from "src/common/enums/role.enum";
-import { Response } from "express";
+import { Request, Response } from "express";
 import { extractStudentId, isValidStudentEmail } from "src/common/helpers/auth/email.util";
 import { Status } from "src/common/enums/status.enum";
 
@@ -12,6 +12,16 @@ export class AuthController {
   constructor(
     private readonly authService: AuthService,
   ) { }
+
+  // Utility method to set authentication cookies
+  private setAuthCookies(res: Response, tokens: { accessToken: string }) {
+    res.cookie('accessToken', tokens.accessToken, {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'strict',
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    });
+  }
 
   @Post('student')
   async registerStudent(@Body() registerStudentAuthDto: RegisterStudentAuthDto, @Res() res: Response) {
@@ -42,13 +52,17 @@ export class AuthController {
     }
 
     if (role == Role.ADMIN) {
-      return res.send(await this.authService.loginAdmin(email))
+      const token = await this.authService.loginAdmin(email)
+      this.setAuthCookies(res, token)
+      return res.redirect('http://localhost:4200/dashboard');
     }
 
     if (role == Role.STUDENT) {
       const studentStatus: Status = await this.authService.getStatusStudentAccount(email)
       if (studentStatus == Status.PENDING) return res.render('auth/approval-notice');
-      return res.send(await this.authService.loginStudent(email))
+      const token = await this.authService.loginStudent(email)
+      this.setAuthCookies(res, token)
+      return res.redirect('http://localhost:4200/dashboard');
     }
 
     return res.render('auth/error');

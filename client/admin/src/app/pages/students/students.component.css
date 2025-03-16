@@ -1,0 +1,258 @@
+/* Trang Students tổng thể */
+.students-page {
+  padding: 20px;
+  background-color: #ECECEC;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Tiêu đề trang */
+.students-page h2 {
+  color: #07689F;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+/* Khu vực nút hành động */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+/* Nút Add New */
+.btn-add {
+  background-color: #07689F;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.btn-add:hover {
+  background-color: #055a85;
+  transform: scale(1.05);
+}
+
+/* Nút View Pending */
+.btn-pending {
+  background-color: #FFA500;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.btn-pending:hover {
+  background-color: #cc8400;
+  transform: scale(1.05);
+}
+
+/* Nút View Pending */
+.btn-all {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.btn-all:hover {
+  background-color: #388E3C;
+  transform: scale(1.05);
+}
+
+/* Bảng Students */
+.student-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Header bảng */
+.student-table thead {
+  background-color: #07689F;
+  color: white;
+}
+
+.student-table th,
+.student-table td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Hover trên hàng */
+.student-table tbody tr:hover {
+  background-color: rgba(7, 104, 159, 0.1);
+}
+
+/* Căn chỉnh cột Actions */
+.student-table td:last-child {
+  text-align: center;
+}
+
+/* Nút Edit */
+.btn-approve {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  margin-right: 5px;
+}
+
+.btn-approve:hover {
+  background-color: #388E3C;
+  transform: scale(1.1);
+}
+
+/* Nút Edit */
+.btn-edit {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  margin-right: 5px;
+}
+
+.btn-edit:hover {
+  background-color: #388E3C;
+  transform: scale(1.1);
+}
+
+/* Nút Delete */
+.btn-delete {
+  background-color: #FF4C4C;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.btn-delete:hover {
+  background-color: #D32F2F;
+  transform: scale(1.1);
+}
+
+/* Trạng thái sinh viên */
+.student-table td:nth-child(8) {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+/* Trạng thái màu sắc */
+.student-table td:nth-child(8):contains("active") {
+  color: green;
+}
+
+.student-table td:nth-child(8):contains("pending") {
+  color: orange;
+}
+
+.student-table td:nth-child(8):contains("inactive") {
+  color: red;
+}
+
+
+/* Overlay (Lớp nền mờ phía sau) */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Khi modal mở */
+.modal-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Modal container (độ rộng cố định) */
+.student-form-modal {
+  width: 90%;
+  max-width: 1200px;
+  /* Độ rộng cố định */
+  max-height: 90vh;
+  /* Độ cao tối đa */
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  position: relative;
+  animation: fadeInScale 0.3s ease-out;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  /* Ẩn overflow để không bị vỡ bố cục */
+}
+
+/* Nội dung cuộn khi quá dài */
+.modal-content {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 10px;
+  max-height: 65vh;
+  /* Giới hạn chiều cao để xuất hiện thanh cuộn */
+}
+
+/* Animation khi mở modal */
+@keyframes fadeInScale {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Nút đóng modal */
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #555;
+  transition: color 0.3s;
+}
+
+.modal-close:hover {
+  color: #d32f2f;
+}

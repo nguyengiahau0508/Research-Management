@@ -30,5 +30,4 @@ export class Department extends BaseEntity {
     (researchTopic) => researchTopic.department
   )
   researchTopics: ResearchTopic[]
-
 }

@@ -1,0 +1,75 @@
+/* Sidebar tổng thể */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: #07689F;
+  /* Màu chủ đạo */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s ease;
+  overflow: hidden;
+}
+
+/* Sidebar khi bị thu gọn */
+.sidebar.collapsed {
+  width: 80px;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Danh sách menu */
+.menu {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+/* Mục menu */
+.menu-item {
+  padding: 10px 20px;
+}
+
+.menu-item a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  transition: background 0.2s;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.menu-item a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Icon */
+.menu-item i {
+  font-size: 18px;
+  margin-right: 10px;
+  width: 20px;
+  text-align: center;
+}
+
+/* Khi sidebar thu gọn, ẩn chữ */
+.sidebar.collapsed .menu-item span {
+  display: none;
+}
+
+/* Mục active */
+.menu-item a.active {
+  background-color: #FF6700;
+  /* Màu cam nổi bật */
+}

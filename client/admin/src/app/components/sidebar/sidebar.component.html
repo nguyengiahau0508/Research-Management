@@ -1,0 +1,21 @@
+<aside class="sidebar" [ngClass]="{ 'collapsed': collapsed }">
+  <div class="logo">
+    @if (!collapsed) {
+    <span>Admin Panel</span>
+    } @else {
+    <span>AP</span>
+    }
+  </div>
+  <ul class="menu">
+    @for (item of menuItems; track item.label) {
+    <li class="menu-item">
+      <a [routerLink]="item.route" routerLinkActive="active">
+        <i class="fas {{ item.icon }}"></i>
+        @if (!collapsed) {
+        <span>{{ item.label }}</span>
+        }
+      </a>
+    </li>
+    }
+  </ul>
+</aside>
