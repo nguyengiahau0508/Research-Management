@@ -83,4 +83,14 @@ export class AuthService {
       accessToken: await this.jwtService.signAsync(payload)
     }
   }
+
+  async loginLecturer(email: string) {
+    const lecturer = await this.lecturerService.findByCondition({ where: { email } })
+    if (!lecturer) throw new NotFoundException(`Lecturer with email:${email} not found`)
+
+    const payload = { sub: lecturer.id, email, roles: [Role.LECTURER] }
+    return {
+      accessToken: await this.jwtService.signAsync(payload)
+    }
+  }
 }

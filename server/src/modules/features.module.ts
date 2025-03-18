@@ -11,6 +11,18 @@ import { RegistrationPeriodsModule } from "./registration-periods/registration-p
 import { LecturersModule } from "./lecturers/lecturers.module";
 import { ResearchTopicsModule } from "./research-topics/research-topics.module";
 import { ResearchMembesModule } from "./research-members/research-members.module";
+import { PersonalInfoModule } from './personal-info/personal-info.module';
+import { ContactInfoModule } from './contact-info/contact-info.module';
+import { LanguageSkillsModule } from './language-skills/language-skills.module';
+import { EducationModule } from './education/education.module';
+import { CertificationModule } from './certification/certification.module';
+import { ResearchProjectsModule } from './research-projects/research-projects.module';
+import { MentorshipModule } from './mentorship/mentorship.module';
+import { PublicationsModule } from './publications/publications.module';
+import { AwardsModule } from './awards/awards.module';
+import { ParacticalApplicationsModule } from './paractical-applications/paractical-applications.module';
+import { AchievementModule } from './achievement/achievement.module';
+import { ExternalActivitiesModule } from './external-activities/external-activities.module';
 
 @Module({
   imports: [
@@ -25,7 +37,19 @@ import { ResearchMembesModule } from "./research-members/research-members.module
     RegistrationPeriodsModule,
     LecturersModule,
     ResearchTopicsModule,
-    ResearchMembesModule
+    ResearchMembesModule,
+    PersonalInfoModule,
+    ContactInfoModule,
+    LanguageSkillsModule,
+    EducationModule,
+    CertificationModule,
+    ResearchProjectsModule,
+    MentorshipModule,
+    PublicationsModule,
+    AwardsModule,
+    ParacticalApplicationsModule,
+    AchievementModule,
+    ExternalActivitiesModule
   ]
 })
 export class FeaturesModule { }

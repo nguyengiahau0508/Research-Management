@@ -44,5 +44,9 @@ export abstract class BaseService<T> {
   preload(entityLike: DeepPartial<T>): Promise<T> {
     return this.repository.preload(entityLike);
   }
+
+  update(id: any, data: DeepPartial<T>): Promise<T> {
+    return this.repository.update(id, data);
+  }
 }
 

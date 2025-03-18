@@ -57,4 +57,9 @@ export abstract class BaseAbstractRepository<T extends HasId>
   public async preload(entityLike: DeepPartial<T>): Promise<T> {
     return await this.entity.preload(entityLike);
   }
+
+  public async update(id: any, data: DeepPartial<T>): Promise<T> {
+    await this.entity.update(id, data);
+    return this.findOneById(id);
+  }
 }

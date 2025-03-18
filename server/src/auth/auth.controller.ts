@@ -1,11 +1,12 @@
-import { Body, Controller, Get, Post, Render, Req, Res, UseGuards } from "@nestjs/common"
+import { Body, Controller, Get, Post, Req, Res, UseGuards } from "@nestjs/common"
 import { AuthService } from "./auth.service";
 import { RegisterStudentAuthDto } from "./dto/register-student-auth.dto";
 import { AuthGuard } from "@nestjs/passport";
 import { Role } from "src/common/enums/role.enum";
-import { Request, Response } from "express";
+import { Response } from "express";
 import { extractStudentId, isValidStudentEmail } from "src/common/helpers/auth/email.util";
 import { Status } from "src/common/enums/status.enum";
+import { JwtAuthGuard } from "./guard/jwt-auth.guard";
 
 @Controller('auth')
 export class AuthController {
@@ -62,9 +63,22 @@ export class AuthController {
       if (studentStatus == Status.PENDING) return res.render('auth/approval-notice');
       const token = await this.authService.loginStudent(email)
       this.setAuthCookies(res, token)
-      return res.redirect('http://localhost:4200/dashboard');
+      return res.redirect('http://localhost:4300/dashboard');
+    }
+
+    if (role == Role.LECTURER) {
+      const token = await this.authService.loginLecturer(email)
+      this.setAuthCookies(res, token)
+      return res.redirect('http://localhost:4400/dashboard');
     }
 
     return res.render('auth/error');
+  }
+
+  @Get(`google/is-login`)
+  @UseGuards(JwtAuthGuard)
+  async isLogin(@Req() req) {
+    if (req.user) return { data: { isLoggedIn: true } }
+    return { data: { isLoggedIn: false } }
   }
 }
